@@ -1,5 +1,6 @@
 const navToggle = document.querySelector('.nav-toggle');
 const siteNav = document.querySelector('.site-nav');
+const adminLink = siteNav?.querySelector('a[href="/admin"]');
 const year = document.getElementById('year');
 const isGitHubPages = window.location.hostname.endsWith('.github.io');
 const isNetlifyFormsSite = fetch('/netlify-registration.json', { cache: 'no-store' })
@@ -21,13 +22,16 @@ if (navToggle && siteNav) {
 }
 
 if (isGitHubPages) {
-  siteNav?.querySelector('a[href="/admin"]')?.remove();
+  adminLink?.remove();
 }
 
 isNetlifyFormsSite.then((enabled) => {
-  if (enabled) {
-    siteNav?.querySelector('a[href="/admin"]')?.remove();
-  }
+  if (!enabled || !adminLink) return;
+
+  adminLink.href = 'https://app.netlify.com/projects/nimble-semolina-b9d0e4/forms';
+  adminLink.textContent = 'Admin: Registrations';
+  adminLink.target = '_blank';
+  adminLink.rel = 'noopener noreferrer';
 });
 
 if (year) {
