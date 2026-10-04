@@ -59,7 +59,7 @@ The project includes:
 
 ### Prerequisites
 
-- Node.js 18 or newer
+- Node.js 22 or newer
 - npm
 
 ### Install dependencies
@@ -140,12 +140,15 @@ GitHub Pages serves only static files. The public preview hides the admin link
 and disables registration because the Express API is not hosted there. For the
 admin dashboard and registration API, deploy the Render Blueprint in
 `render.yaml`: connect the repository in the Render dashboard and create a new
-Blueprint. Render generates the admin password and JWT secret; find the password
-in the service's Environment settings.
+Blueprint. This provisions a Starter web service with a persistent disk. Render
+generates the admin password and JWT secret; find the password in the service's
+Environment settings. A fresh deployment opens registration by default.
 
-The free Render service uses an ephemeral filesystem, so the SQLite database in
-`data/site.db` can be reset when the service restarts or redeploys. Use persistent
-storage or a managed database before relying on it for real registrations.
+Admins sign in at `/admin` on the Render service URL. Submitted players appear
+in the dashboard's **Registrations** section. Use **Website Settings** to close
+or reopen registration. The database is stored on the mounted persistent disk,
+not in the Git repository; never commit `data/site.db` because it can contain
+player and guardian information.
 
 ## License
 

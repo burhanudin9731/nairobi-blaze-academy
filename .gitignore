@@ -5,6 +5,9 @@
 node_modules/
 **/node_modules/
 
+# Local database files may contain player registration data
+data/*.db
+
 # Logs
 npm-debug.log*
 yarn-debug.log*

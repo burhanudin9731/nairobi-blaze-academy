@@ -7,11 +7,14 @@ const { DatabaseSync } = require('node:sqlite');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+if (process.env.NODE_ENV === 'production' && (!process.env.JWT_SECRET || !process.env.ADMIN_USERNAME || !process.env.ADMIN_PASSWORD)) {
+  throw new Error('JWT_SECRET, ADMIN_USERNAME, and ADMIN_PASSWORD must be set in production.');
+}
 const JWT_SECRET = process.env.JWT_SECRET || 'nairobi-blaze-admin-secret';
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 
-const dataDir = path.join(__dirname, 'data');
+const dataDir = process.env.DATA_DIR || path.join(__dirname, 'data');
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
 }
@@ -55,7 +58,7 @@ const setDefaultSetting = (key, value) => {
   }
 };
 
-setDefaultSetting('registration_open', 'false');
+setDefaultSetting('registration_open', process.env.REGISTRATION_OPEN === 'true' ? 'true' : 'false');
 setDefaultSetting('registration_fee', '4500');
 setDefaultSetting('monthly_subscription', '3500');
 setDefaultSetting('admin_email', 'khalito90@gmail.com');
@@ -69,6 +72,10 @@ if (!adminExists) {
 app.use(express.json({ limit: '2mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
+
+app.get('/healthz', (req, res) => {
+  res.sendStatus(200);
+});
 
 const authRequired = (req, res, next) => {
   const authHeader = req.headers.authorization || '';
@@ -230,5 +237,4 @@ app.get('*', (req, res, next) => {
 
 app.listen(PORT, () => {
   console.log(`Nairobi Blaze server running at http://localhost:${PORT}`);
-  console.log(`Admin login: ${ADMIN_USERNAME} / ${ADMIN_PASSWORD}`);
 });
