@@ -18,6 +18,7 @@ yarn-error.log*
 **/.next/
 out/
 **/out/
+dist/
 
 # Environment files
 .env

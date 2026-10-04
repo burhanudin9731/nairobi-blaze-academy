@@ -2,6 +2,9 @@ const navToggle = document.querySelector('.nav-toggle');
 const siteNav = document.querySelector('.site-nav');
 const year = document.getElementById('year');
 const isGitHubPages = window.location.hostname.endsWith('.github.io');
+const isNetlifyFormsSite = fetch('/netlify-registration.json', { cache: 'no-store' })
+  .then((response) => response.ok)
+  .catch(() => false);
 
 if (navToggle && siteNav) {
   navToggle.addEventListener('click', () => {
@@ -20,6 +23,12 @@ if (navToggle && siteNav) {
 if (isGitHubPages) {
   siteNav?.querySelector('a[href="/admin"]')?.remove();
 }
+
+isNetlifyFormsSite.then((enabled) => {
+  if (enabled) {
+    siteNav?.querySelector('a[href="/admin"]')?.remove();
+  }
+});
 
 if (year) {
   year.textContent = new Date().getFullYear();
@@ -46,7 +55,7 @@ const formatMoney = (value) => new Intl.NumberFormat('en-KE', {
 }).format(Number(value || 0));
 
 const loadAdminEmail = async () => {
-  if (!adminEmailLink || isGitHubPages) return;
+  if (!adminEmailLink || isGitHubPages || await isNetlifyFormsSite) return;
 
   try {
     const response = await fetch('/api/site-status');
@@ -63,6 +72,10 @@ const loadAdminEmail = async () => {
 };
 
 const setRegistrationClosed = (message) => {
+  if (joinForm) {
+    joinForm.inert = true;
+  }
+
   if (registrationNotice) {
     registrationNotice.textContent = message || 'Registration is currently closed. Please contact the admin for updates or reopening.';
     registrationNotice.hidden = false;
@@ -91,6 +104,10 @@ const setRegistrationClosed = (message) => {
 };
 
 const setRegistrationOpen = (fee, monthly) => {
+  if (joinForm) {
+    joinForm.inert = false;
+  }
+
   if (registrationNotice) {
     registrationNotice.hidden = true;
   }
@@ -116,6 +133,14 @@ const setRegistrationOpen = (fee, monthly) => {
 const loadSiteStatus = async () => {
   if (isGitHubPages) {
     setRegistrationClosed('Online registration is unavailable on this public preview. Please contact Nairobi Blaze by phone or WhatsApp.');
+    return;
+  }
+
+  if (await isNetlifyFormsSite) {
+    setRegistrationOpen(4500, 3500);
+    if (ageGroupSelect && ageGroupAvailability) {
+      ageGroupAvailability.textContent = 'Registration is open. Please complete the form below.';
+    }
     return;
   }
 
@@ -146,6 +171,8 @@ const loadSiteStatus = async () => {
 
 if (joinForm) {
   joinForm.addEventListener('submit', async (event) => {
+    if (await isNetlifyFormsSite) return;
+
     event.preventDefault();
 
     try {

@@ -150,6 +150,11 @@ or reopen registration. The database is stored on the mounted persistent disk,
 not in the Git repository; never commit `data/site.db` because it can contain
 player and guardian information.
 
+As a form-only alternative, deploy this repository to Netlify. The Netlify build
+publishes the homepage and enables native Netlify Forms submissions; review
+entries in the site's **Forms** dashboard. This alternative does not include the
+custom `/admin` dashboard or its settings API.
+
 ## License
 
 This project is for educational and project-development use. Add a license file if you plan to distribute it publicly or commercially.
