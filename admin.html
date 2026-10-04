@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nairobi Blaze Admin</title>
+    <style>
+      :root {
+        --bg: #07140d;
+        --panel: #0f251f;
+        --panel-2: #122a22;
+        --line: rgba(255,255,255,0.08);
+        --text: #ebf3ee;
+        --muted: #bfd4c8;
+        --gold: #f3ce63;
+        --green: #25d366;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      .container { width: min(1100px, calc(100% - 2rem)); margin: 0 auto; }
+      .header {
+        padding: 1.2rem 0; border-bottom: 1px solid var(--line); background: rgba(7,20,13,0.9);
+      }
+      .header-inner { display: flex; justify-content: space-between; align-items: center; }
+      .title { font-size: 1.4rem; font-weight: 700; }
+      .logout { background: transparent; border: 1px solid var(--line); color: var(--text); padding: 0.7rem 1rem; border-radius: 10px; cursor: pointer; }
+      .auth, .dashboard { display: none; }
+      .auth.visible, .dashboard.visible { display: block; }
+      .auth-box, .panel {
+        margin: 3rem auto; max-width: 520px; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 2rem; box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+      }
+      .auth-box h2, .panel h2 { margin-top: 0; }
+      .field { display: grid; gap: 0.5rem; margin-bottom: 1rem; }
+      input, button, select {
+        width: 100%; padding: 0.9rem 1rem; font-size: 1rem; border-radius: 10px; border: 1px solid var(--line); background: #081b15; color: var(--text);
+      }
+      button { cursor: pointer; background: linear-gradient(135deg, var(--green), #85e3a8); color: #07140d; font-weight: 700; border: none; }
+      .status-row { display: flex; gap: 1rem; align-items: center; }
+      .toggle-status { display: inline-flex; align-items: center; gap: 0.6rem; }
+      .toggle-status input { width: 18px; height: 18px; }
+      .panel { max-width: 1000px; }
+      .settings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1rem; margin-bottom: 1rem; }
+      .list { margin-top: 1rem; display: grid; gap: 0.8rem; }
+      .entry { border: 1px solid var(--line); border-radius: 12px; padding: 1rem; background: var(--panel-2); }
+      .muted { color: var(--muted); }
+      .error { color: #ffb2b2; display: none; }
+      .error.visible { display: block; }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-inner">
+        <div>
+          <div class="title">Nairobi Blaze Admin</div>
+          <div class="muted" style="margin-top: 0.4rem;">Admin email: khalito90@gmail.com</div>
+        </div>
+        <button class="logout" id="logoutBtn" hidden>Logout</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="auth visible" id="loginSection">
+        <div class="auth-box">
+          <h2>Admin Login</h2>
+          <div class="error" id="loginError"></div>
+          <div class="field">
+            <label for="username">Username</label>
+            <input id="username" type="text" placeholder="admin" />
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" type="password" placeholder="••••••••" />
+          </div>
+          <button id="loginBtn">Login</button>
+        </div>
+      </section>
+
+      <section class="dashboard" id="dashboardSection">
+        <div class="panel">
+          <h2>Website Settings</h2>
+          <div class="settings-grid">
+            <label class="field">
+              <span>Registration fee (KSh)</span>
+              <input id="feeInput" type="number" min="0" step="50" />
+            </label>
+            <label class="field">
+              <span>Monthly subscription (KSh)</span>
+              <input id="subscriptionInput" type="number" min="0" step="50" />
+            </label>
+            <label class="field">
+              <span>Admin email</span>
+              <input id="adminEmailInput" type="email" placeholder="khalito90@gmail.com" />
+            </label>
+            <div class="field">
+              <span>Public registration</span>
+              <label class="toggle-status">
+                <input id="openToggle" type="checkbox" />
+                Open for registration
+              </label>
+            </div>
+          </div>
+          <button id="saveSettingsBtn">Save Settings</button>
+        </div>
+
+        <div class="panel" style="margin-top: 2rem;">
+          <h2>Registrations</h2>
+          <div id="registrationsList" class="list"></div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const loginSection = document.getElementById('loginSection');
+      const dashboardSection = document.getElementById('dashboardSection');
+      const loginBtn = document.getElementById('loginBtn');
+      const logoutBtn = document.getElementById('logoutBtn');
+      const loginError = document.getElementById('loginError');
+      const feeInput = document.getElementById('feeInput');
+      const subscriptionInput = document.getElementById('subscriptionInput');
+      const adminEmailInput = document.getElementById('adminEmailInput');
+      const openToggle = document.getElementById('openToggle');
+      const registrationsList = document.getElementById('registrationsList');
+
+      const setToken = (token) => localStorage.setItem('nb_admin_token', token || '');
+      const getToken = () => localStorage.getItem('nb_admin_token');
+
+      const showLogin = () => {
+        loginSection.classList.add('visible');
+        dashboardSection.classList.remove('visible');
+        logoutBtn.hidden = true;
+      };
+
+      const showDashboard = () => {
+        loginSection.classList.remove('visible');
+        dashboardSection.classList.add('visible');
+        logoutBtn.hidden = false;
+      };
+
+      const authFetch = async (url, options = {}) => {
+        const token = getToken();
+        const response = await fetch(url, {
+          ...options,
+          headers: {
+            ...(options.headers || {}),
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (response.status === 401) {
+          setToken('');
+          showLogin();
+          return null;
+        }
+
+        return response;
+      };
+
+      const loadSettings = async () => {
+        const response = await authFetch('/api/admin/settings');
+        if (!response) return;
+        const data = await response.json();
+        feeInput.value = data.registration_fee || 4500;
+        subscriptionInput.value = data.monthly_subscription || 3500;
+        adminEmailInput.value = data.admin_email || 'khalito90@gmail.com';
+        openToggle.checked = data.registration_open === 'true';
+      };
+
+      const loadRegistrations = async () => {
+        const response = await authFetch('/api/admin/registrations');
+        if (!response) return;
+        const list = await response.json();
+
+        registrationsList.innerHTML = list.length
+          ? list.map((item) => `
+              <div class="entry">
+                <strong>${item.full_name}</strong>
+                <div class="muted">${item.age_group} • ${item.gender} • ${item.email}</div>
+                <div class="muted">Phone: ${item.guardian_phone}</div>
+                <div class="muted">Payment: ${item.payment_method} • ${item.payment_reference}</div>
+                <div class="muted">Created: ${new Date(item.created_at).toLocaleString()}</div>
+              </div>
+            `).join('')
+          : '<div class="entry">No registrations yet.</div>';
+      };
+
+      loginBtn.addEventListener('click', async () => {
+        loginError.classList.remove('visible');
+        loginError.textContent = '';
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+
+        const response = await fetch('/api/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password }),
+        });
+
+        const result = await response.json();
+        if (!response.ok) {
+          loginError.textContent = result.message || 'Login failed.';
+          loginError.classList.add('visible');
+          return;
+        }
+
+        setToken(result.token);
+        showDashboard();
+        loadSettings();
+        loadRegistrations();
+      });
+
+      logoutBtn.addEventListener('click', () => {
+        setToken('');
+        showLogin();
+      });
+
+      document.getElementById('saveSettingsBtn').addEventListener('click', async () => {
+        const response = await authFetch('/api/admin/settings', {
+          method: 'PUT',
+          body: JSON.stringify({
+            registration_open: openToggle.checked,
+            registration_fee: Number(feeInput.value || 0),
+            monthly_subscription: Number(subscriptionInput.value || 0),
+            admin_email: adminEmailInput.value || 'khalito90@gmail.com',
+          }),
+        });
+
+        if (!response) return;
+        alert('Settings saved successfully.');
+      });
+
+      if (getToken()) {
+        showDashboard();
+        loadSettings();
+        loadRegistrations();
+      } else {
+        showLogin();
+      }
+    </script>
+  </body>
+</html>

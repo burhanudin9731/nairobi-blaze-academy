@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Nairobi Blaze Football Academy & Youth Development Club in South C, Nairobi. Develop. Compete. Progress."
+    />
+    <title>Nairobi Blaze | Develop. Compete. Progress.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="#top" class="brand" aria-label="Nairobi Blaze home">
+          <span class="brand-mark">NB</span>
+          <span class="brand-text">
+            <strong>Nairobi Blaze</strong>
+            <small>Academy & Club</small>
+          </span>
+        </a>
+
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="#about">About Us</a>
+          <a href="#development">Player Development</a>
+          <a href="#teams">Teams</a>
+          <a href="#training">Training</a>
+          <a href="#news">News</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#partners">Partners</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a class="btn btn-primary nav-cta" href="#join">Join Nairobi Blaze</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-badge" aria-hidden="true">
+          <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nairobi Blaze crest">
+            <defs>
+              <linearGradient id="gold" x1="0%" x2="100%" y1="0%" y2="100%">
+                <stop offset="0%" stop-color="#fff2b5" />
+                <stop offset="18%" stop-color="#f2cf5c" />
+                <stop offset="45%" stop-color="#d9a931" />
+                <stop offset="75%" stop-color="#f5d56a" />
+                <stop offset="100%" stop-color="#c98c12" />
+              </linearGradient>
+              <linearGradient id="mane" x1="0%" x2="100%" y1="0%" y2="100%">
+                <stop offset="0%" stop-color="#f9df7d" />
+                <stop offset="28%" stop-color="#e5b92d" />
+                <stop offset="70%" stop-color="#b77d14" />
+                <stop offset="100%" stop-color="#f4d05c" />
+              </linearGradient>
+            </defs>
+            <circle cx="500" cy="500" r="415" fill="#0b0f0e" stroke="url(#gold)" stroke-width="18"/>
+            <circle cx="500" cy="500" r="385" fill="none" stroke="url(#gold)" stroke-width="10" opacity="0.9"/>
+
+            <g fill="none" stroke="url(#gold)" stroke-width="10" stroke-linecap="round">
+              <path d="M130 500C150 365 220 290 320 260" opacity="0.95"/>
+              <path d="M160 410C195 285 275 230 355 220" opacity="0.9"/>
+              <path d="M185 610C220 720 290 790 387 816" opacity="0.88"/>
+              <path d="M870 500C850 365 780 290 680 260" opacity="0.95"/>
+              <path d="M840 410C805 285 725 230 645 220" opacity="0.9"/>
+              <path d="M815 610C780 720 710 790 613 816" opacity="0.88"/>
+            </g>
+
+            <path d="M250 362C338 248 472 195 590 214C658 224 714 250 767 295C718 296 679 312 646 338C625 355 617 390 618 425C576 396 530 379 470 374C413 369 352 382 290 406C280 389 275 372 250 362Z" fill="url(#mane)" opacity="0.96"/>
+            <path d="M328 658C386 560 428 517 510 505C571 496 642 531 687 575C632 645 571 688 502 705C450 718 378 695 328 658Z" fill="url(#mane)" opacity="0.94"/>
+
+            <g>
+              <path d="M420 297C495 244 618 259 660 345C685 396 685 507 644 556C598 610 520 644 447 632C388 623 337 594 303 548C264 496 255 437 271 389C286 351 344 319 420 297Z" fill="#f5d777"/>
+              <path d="M276 452C310 382 356 331 423 303C457 287 495 282 530 288C569 296 610 314 640 344C653 356 664 371 676 388C692 409 704 436 705 465C707 518 684 573 650 613C613 656 550 685 489 693C402 704 326 667 292 607C267 566 259 509 276 452Z" fill="#efc553"/>
+              <path d="M335 453C352 398 399 359 447 353C492 347 539 359 579 390C605 413 623 442 631 479C640 518 635 556 613 587C580 632 512 660 456 652C394 644 333 600 318 543C312 521 317 493 335 453Z" fill="#0c0f10"/>
+              <path d="M383 462C404 430 435 411 470 407C510 402 557 417 584 448C610 480 613 525 592 560C566 605 511 636 452 632C415 630 381 613 356 581C335 553 327 505 345 475C354 460 363 454 383 462Z" fill="#fbe08a"/>
+              <path d="M407 475C416 446 443 423 476 420C514 417 550 438 566 475C580 508 574 551 546 578C515 607 466 612 432 591C395 568 381 518 407 475Z" fill="#dba833"/>
+              <path d="M394 474C409 460 428 461 438 471C445 479 448 489 447 501C446 516 435 530 422 536C405 544 386 535 379 520C372 505 377 487 394 474Z" fill="#121212" opacity="0.9"/>
+              <path d="M562 511C577 510 593 522 595 538C598 561 578 580 557 582C532 585 513 575 511 557C509 538 528 514 562 511Z" fill="#121212" opacity="0.9"/>
+              <path d="M456 550C470 570 485 584 506 596C517 602 528 607 540 609C527 630 512 647 489 657C465 667 438 668 412 655C430 633 442 603 456 550Z" fill="#f5d777" opacity="0.8"/>
+              <path d="M498 466L538 499L494 521L450 491L498 466Z" fill="#111"/>
+              <path d="M465 499C477 492 489 493 500 500C513 508 518 518 518 532C502 548 481 556 462 538C457 525 462 510 465 499Z" fill="#fce9a2"/>
+              <path d="M471 559C490 573 514 578 538 571C551 567 562 560 573 551C581 578 567 604 544 621C516 640 477 640 447 623C468 596 478 578 471 559Z" fill="#f2c85a"/>
+            </g>
+
+            <g fill="url(#gold)">
+              <path d="M355 695C389 712 431 726 476 731C528 737 593 725 644 697L637 734C585 766 518 783 455 778C418 776 378 768 344 753L355 695Z"/>
+              <path d="M432 711C444 765 432 812 402 847L372 841C390 799 395 764 387 725L432 711Z"/>
+              <path d="M554 708C566 761 580 803 612 842L645 836C617 789 610 756 618 714L554 708Z"/>
+            </g>
+
+            <g fill="#fff" stroke="#d3a11a" stroke-width="8">
+              <path d="M348 204L360 226L382 228L367 244L372 267L348 254L324 267L329 244L314 228L336 226L348 204Z"/>
+              <path d="M652 204L664 226L686 228L671 244L676 267L652 254L628 267L633 244L618 228L640 226L652 204Z"/>
+            </g>
+
+            <text x="500" y="176" text-anchor="middle" fill="#f8d96a" font-size="98" font-family="'Barlow', 'Arial', sans-serif" font-weight="800" letter-spacing="8">NAIROBI BLAZE</text>
+            <text x="500" y="826" text-anchor="middle" fill="#f8d96a" font-size="54" font-family="'Barlow', 'Arial', sans-serif" font-weight="700" letter-spacing="7">FROM A DREAM TO A TEAM</text>
+            <text x="500" y="290" text-anchor="middle" fill="#f8d96a" font-size="46" font-family="'Barlow', 'Arial', sans-serif" font-weight="600" letter-spacing="10">FOOTBALL CLUB</text>
+          </svg>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <span class="eyebrow">South C, Nairobi, Kenya</span>
+            <h1>NAIROBI BLAZE</h1>
+            <p class="tagline">DEVELOP. COMPETE. PROGRESS.</p>
+            <p class="lead">
+              Building the next generation of football talent from Nairobi to the world.
+            </p>
+            <div class="hero-actions">
+              <a href="#join" class="btn btn-primary">Join Nairobi Blaze</a>
+              <a href="#development" class="btn btn-secondary">Our Programmes</a>
+            </div>
+          </div>
+
+          <div class="hero-panel">
+            <div class="stat-card">
+              <strong>U7–U15</strong>
+              <span>Age-group development</span>
+            </div>
+            <div class="stat-card">
+              <strong>Pathway</strong>
+              <span>Grassroots to elite</span>
+            </div>
+            <div class="stat-card">
+              <strong>South C Arena</strong>
+              <span>Home ground & training base</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about" id="about">
+        <div class="container grid-2">
+          <div>
+            <span class="section-tag">Who We Are</span>
+            <h2>Developing players with discipline, talent and purpose.</h2>
+            <p>
+              Nairobi Blaze is a football academy and youth development club built to
+              create a clear and professional path for young players in Kenya. We are
+              committed to developing technically gifted, tactically aware, mentally
+              strong and character-driven players who are ready for football at the next
+              level.
+            </p>
+            <p>
+              Our vision is to build a leading football development institution that
+              nurtures young talent, improves the standard of youth football in Nairobi,
+              and creates meaningful opportunities from grassroots football to elite and
+              professional competition.
+            </p>
+          </div>
+
+          <div class="mission-box">
+            <div>
+              <h3>Vision</h3>
+              <p>
+                To build Nairobi Blaze into a leading football development institution in
+                Kenya, nurturing talented young players and creating a clear pathway from
+                grassroots football to elite and professional competition.
+              </p>
+            </div>
+            <div>
+              <h3>Mission</h3>
+              <p>
+                To identify, develop and empower young footballers through structured
+                training, professional coaching, discipline, education and competitive
+                football, while creating opportunities for players to progress to higher
+                levels of the game.
+              </p>
+            </div>
+            <div class="values">
+              <span>Discipline</span>
+              <span>Development</span>
+              <span>Teamwork</span>
+              <span>Respect</span>
+              <span>Commitment</span>
+              <span>Excellence</span>
+              <span>Character</span>
+              <span>Competition</span>
+              <span>Opportunity</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="development">
+        <div class="container">
+          <div class="section-heading center">
+            <span class="section-tag">Player Development</span>
+            <h2>Developing complete footballers.</h2>
+          </div>
+
+          <div class="card-grid four-col">
+            <article class="info-card">
+              <span class="card-icon">01</span>
+              <h3>Technical</h3>
+              <p>Ball mastery, passing and receiving, dribbling, finishing and 1v1 ability.</p>
+            </article>
+            <article class="info-card">
+              <span class="card-icon">02</span>
+              <h3>Tactical</h3>
+              <p>Game understanding, decision-making, positioning and team play awareness.</p>
+            </article>
+            <article class="info-card">
+              <span class="card-icon">03</span>
+              <h3>Physical</h3>
+              <p>Speed, agility, coordination, strength, endurance and movement quality.</p>
+            </article>
+            <article class="info-card">
+              <span class="card-icon">04</span>
+              <h3>Mental & Character</h3>
+              <p>Discipline, resilience, leadership, teamwork and confidence under pressure.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="age-groups">
+        <div class="container">
+          <div class="section-heading center">
+            <span class="section-tag">Age Groups</span>
+            <h2>Structured development at every stage.</h2>
+          </div>
+
+          <div class="card-grid four-col">
+            <article class="age-card">
+              <div class="age-badge">U7</div>
+              <h3>Foundation</h3>
+              <p>Introduction to football, coordination, enjoyment and basic ball skills.</p>
+            </article>
+            <article class="age-card">
+              <div class="age-badge">U9</div>
+              <h3>Technical Growth</h3>
+              <p>Technical foundations, confidence on the ball and game principles.</p>
+            </article>
+            <article class="age-card">
+              <div class="age-badge">U13</div>
+              <h3>Competitive Readiness</h3>
+              <p>Technical refinement, tactical understanding and competitive development.</p>
+            </article>
+            <article class="age-card">
+              <div class="age-badge">U15</div>
+              <h3>Elite Progression</h3>
+              <p>Advanced player development, tactical awareness and physical growth.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt pathway" id="pathway">
+        <div class="container">
+          <div class="section-heading center">
+            <span class="section-tag">Nairobi Blaze Pathway</span>
+            <h2>Your journey starts here.</h2>
+          </div>
+
+          <div class="pathway-steps">
+            <div class="step"><span>01</span><strong>Grassroots</strong></div>
+            <div class="step"><span>02</span><strong>Academy</strong></div>
+            <div class="step"><span>03</span><strong>Youth Competition</strong></div>
+            <div class="step"><span>04</span><strong>Senior Football</strong></div>
+            <div class="step"><span>05</span><strong>Elite & Professional Opportunities</strong></div>
+          </div>
+
+          <p class="pathway-copy">
+            From the first football sessions to competitive youth football and eventually
+            senior football, our objective is to give talented players the environment,
+            training and opportunities required to continue progressing.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="teams">
+        <div class="container">
+          <div class="section-heading">
+            <span class="section-tag">Youth Teams</span>
+            <h2>Compete at the next level.</h2>
+          </div>
+
+          <div class="teams-grid">
+            <div class="team-panel">
+              <h3>Squad & Match Experience</h3>
+              <p>
+                Nairobi Blaze is building competitive teams that will give players regular
+                exposure to organized football and meaningful match experience.
+              </p>
+              <ul>
+                <li>Squad management</li>
+                <li>Fixtures & results</li>
+                <li>League tables</li>
+                <li>Match reports</li>
+                <li>Player profiles</li>
+              </ul>
+            </div>
+            <div class="team-panel highlight">
+              <h3>Development Focus</h3>
+              <div class="mini-stats">
+                <div><strong>U7</strong><span>Foundation</span></div>
+                <div><strong>U9</strong><span>Build</span></div>
+                <div><strong>U13</strong><span>Compete</span></div>
+                <div><strong>U15</strong><span>Progress</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="training">
+        <div class="container">
+          <div class="section-heading">
+            <span class="section-tag">Training</span>
+            <h2>Training sessions at South C Arena.</h2>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Age Group</th>
+                  <th>Day</th>
+                  <th>Time</th>
+                  <th>Location</th>
+                  <th>Coach</th>
+                  <th>Availability</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>U7</td>
+                  <td>Monday</td>
+                  <td>5:00 PM</td>
+                  <td>South C Arena</td>
+                  <td>Coach A. Njoroge</td>
+                  <td><span class="status full">Registration Closed</span></td>
+                </tr>
+                <tr>
+                  <td>U9</td>
+                  <td>Wednesday</td>
+                  <td>5:30 PM</td>
+                  <td>South C Arena</td>
+                  <td>Coach K. Omondi</td>
+                  <td><span class="status full">Registration Closed</span></td>
+                </tr>
+                <tr>
+                  <td>U13</td>
+                  <td>Thursday</td>
+                  <td>6:00 PM</td>
+                  <td>South C Arena</td>
+                  <td>Coach B. Wambua</td>
+                  <td><span class="status full">Registration Closed</span></td>
+                </tr>
+                <tr>
+                  <td>U15</td>
+                  <td>Saturday</td>
+                  <td>9:00 AM</td>
+                  <td>South C Arena</td>
+                  <td>Coach J. Maina</td>
+                  <td><span class="status full">Registration Closed</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section join" id="join">
+        <div class="container grid-2 join-wrap">
+          <div>
+            <span class="section-tag">Join Nairobi Blaze</span>
+            <h2>Take the next step in your football journey.</h2>
+            <p>
+              We are building a football environment where talent is nurtured with
+              professionalism, structure and ambition.
+            </p>
+            <ul class="check-list">
+              <li>Structured training programmes</li>
+              <li>Development-focused coaching</li>
+              <li>Competitive team pathways</li>
+            </ul>
+          </div>
+
+          <form
+            class="join-form"
+            name="academy-registration"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/?registration=success#join"
+          >
+            <p class="admin-closed-note">Registration is currently closed. Please contact the admin for updates or reopening.</p>
+            <input type="hidden" name="form-name" value="academy-registration" />
+            <input type="hidden" name="subject" data-remove-prefix value="New academy registration: %{submissionId}" />
+            <p hidden>
+              <label>Leave this field empty: <input name="bot-field" /></label>
+            </p>
+            <div class="field-row two-col">
+              <label>
+                Full name
+                <input type="text" name="player-name" placeholder="Player full name" required />
+              </label>
+              <label>
+                Date of birth
+                <input type="date" name="date-of-birth" required />
+              </label>
+            </div>
+            <div class="field-row two-col">
+              <label>
+                Age group
+                <select id="age-group" name="age-group" required>
+                  <option value="" disabled selected>Select age group</option>
+                  <option value="U7" data-availability="open">U7 - Registration open</option>
+                  <option value="U9" data-availability="open">U9 - Registration open</option>
+                  <option value="U13" data-availability="full">U13 - Full</option>
+                  <option value="U15" data-availability="open">U15 - Registration open</option>
+                </select>
+              </label>
+              <label>
+                Gender
+                <select name="gender" required>
+                  <option value="" disabled selected>Select gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+            </div>
+            <p id="age-group-availability" role="status" aria-live="polite">
+              All age groups are currently closed for registration. Please contact the admin for updates.
+            </p>
+            <div class="field-row two-col">
+              <label>
+                Preferred position
+                <input type="text" name="preferred-position" placeholder="e.g. Striker, Midfielder" />
+              </label>
+              <label>
+                Previous club/academy
+                <input type="text" name="previous-club" placeholder="Previous club or academy" />
+              </label>
+            </div>
+            <label>
+              Parent/Guardian name
+              <input type="text" name="parent-guardian" placeholder="Parent or guardian full name" required />
+            </label>
+            <div class="field-row two-col">
+              <label>
+                Phone number
+                <input type="tel" name="guardian-phone" placeholder="+254 ..." autocomplete="tel" required />
+              </label>
+              <label>
+                Email
+                <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+              </label>
+            </div>
+            <label>
+              Payment method
+              <select id="payment-method" name="payment-method" required>
+                <option value="" disabled selected>Select payment method</option>
+                <option value="M-Pesa">M-Pesa Send Money</option>
+                <option value="Bank transfer">Bank transfer</option>
+              </select>
+            </label>
+            <p id="payment-instructions" class="payment-instructions" role="status" aria-live="polite">
+              Registration is currently closed. The admin controls all fees, reopening and payment updates.
+            </p>
+            <label>
+              Payment transaction/reference number
+              <input type="text" name="payment-reference" placeholder="M-Pesa transaction code or bank reference" autocomplete="off" required />
+            </label>
+            <label class="payment-confirmation">
+              <input type="checkbox" name="payment-confirmed" value="yes" required />
+              <span>Registration is closed. The admin will reopen the intake when places become available.</span>
+            </label>
+            <label>
+              Medical information
+              <textarea name="medical-information" rows="4" placeholder="Any relevant medical details or conditions"></textarea>
+            </label>
+            <button type="submit" class="btn btn-primary">Submit Registration</button>
+            <p id="registration-status" role="status" aria-live="polite" hidden>
+              Registration received. Nairobi Blaze will verify your payment reference and contact you soon.
+            </p>
+          </form>
+        </div>
+      </section>
+
+      <section class="section coaches" id="coaches">
+        <div class="container">
+          <div class="section-heading center">
+            <span class="section-tag">Coaching Team</span>
+            <h2>Meet our coaches.</h2>
+          </div>
+
+          <div class="card-grid three-col">
+            <article class="coach-card">
+              <img
+                src="assets/images/abdimalik-ibrahim.jpeg"
+                alt="Coach Abdimalik Ibrahim"
+              />
+              <div class="coach-content">
+                <h3>Abdimalik Ibrahim</h3>
+                <span>Head Coach</span>
+                <p>UEFA-inspired development philosophy focused on technical quality and decision-making.</p>
+              </div>
+            </article>
+            <article class="coach-card">
+              <img
+                src="assets/images/dj-khalid.jpeg"
+                alt="Coach DJ Khalid"
+              />
+              <div class="coach-content">
+                <h3>DJ Khalid</h3>
+                <span>Academy Director</span>
+                <p>Dedicated to the long-term development of players and positive team culture.</p>
+              </div>
+            </article>
+            <article class="coach-card">
+              <img
+                src="assets/images/burhan.jpg"
+                alt="Coach Burhan Ibrahim"
+              />
+              <div class="coach-content">
+                <h3>Burhan Ibrahim</h3>
+                <span>Performance Coach</span>
+                <p>Focuses on movement, conditioning and the physical aspect of youthful development.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="news">
+        <div class="container">
+          <div class="section-heading">
+            <span class="section-tag">News & Updates</span>
+            <h2>Latest from Nairobi Blaze.</h2>
+          </div>
+
+          <div class="card-grid three-col">
+            <article class="news-card">
+              <div class="news-image news-one"></div>
+              <div class="news-content">
+                <span class="news-meta">Academy</span>
+                <h3>New season training programme begins this month.</h3>
+                <p>Players are being prepared for a demanding but exciting campaign across age groups.</p>
+              </div>
+            </article>
+            <article class="news-card">
+              <div class="news-image news-two"></div>
+              <div class="news-content">
+                <span class="news-meta">Match Report</span>
+                <h3>U13 team secures confidence-building result in Nairobi.</h3>
+                <p>Strong teamwork and tactical discipline helped the side deliver a memorable performance.</p>
+              </div>
+            </article>
+            <article class="news-card">
+              <div class="news-image news-three"></div>
+              <div class="news-content">
+                <span class="news-meta">Partnership</span>
+                <h3>Academy expands community football outreach initiatives.</h3>
+                <p>New community activities are creating more opportunities for young talent to thrive.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="container">
+          <div class="section-heading center">
+            <span class="section-tag">Gallery</span>
+            <h2>Training, matches and academy life.</h2>
+          </div>
+
+          <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?auto=format&fit=crop&w=900&q=80" alt="Football training session" />
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=900&q=80" alt="Players on the field" />
+            <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=900&q=80" alt="Youth football match" />
+            <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=900&q=80" alt="Coach training a player" />
+            <img src="https://images.unsplash.com/photo-1556056504-5c7696c4c28d?auto=format&fit=crop&w=900&q=80" alt="Young footballers preparing" />
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=900&q=80" alt="Football pitch and stadium" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="partners">
+        <div class="container">
+          <div class="section-heading center">
+            <span class="section-tag">Partners & Sponsors</span>
+            <h2>Supporting growth and opportunity.</h2>
+          </div>
+
+          <div class="partners-grid">
+            <div class="partner-group">
+              <h3>Official Partners</h3>
+              <div class="partner-badges">
+                <span>South C Arena</span>
+                <span>Local Sports Network</span>
+                <span>Kenyan Football Group</span>
+              </div>
+            </div>
+            <div class="partner-group">
+              <h3>Technical Partners</h3>
+              <div class="partner-badges">
+                <span>Performance Lab</span>
+                <span>Kit & Equipment</span>
+                <span>Sports Science</span>
+              </div>
+            </div>
+            <div class="partner-group">
+              <h3>Academy Sponsors</h3>
+              <div class="partner-badges">
+                <span>Community Support</span>
+                <span>Youth Fund</span>
+                <span>Football Growth</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section arena" id="arena">
+        <div class="container grid-2">
+          <div>
+            <span class="section-tag">Our Home</span>
+            <h2>South C Arena</h2>
+            <p>
+              Nairobi Blaze operates from South C Arena, a modern football facility in
+              Nairobi that provides the academy with a dedicated environment for training,
+              player development and competitive football.
+            </p>
+            <ul class="feature-list">
+              <li>Modern training surfaces</li>
+              <li>Professional training environment</li>
+              <li>Ideal for youth football growth</li>
+            </ul>
+          </div>
+
+          <div class="arena-card">
+            <div class="arena-map">
+              <iframe
+                src="https://www.google.com/maps?q=South%20C%20Arena%20Nairobi&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="South C Arena Map"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div class="container grid-2">
+          <div>
+            <span class="section-tag">Contact</span>
+            <h2>Nairobi Blaze Football Academy</h2>
+            <p>Location: South C, Nairobi, Kenya</p>
+            <p>Home Ground: South C Arena</p>
+
+            <div class="contact-list">
+              <a href="tel:+254721313563">+254 721 313 563</a>
+              <a class="social-link" href="https://wa.me/254721313563" target="_blank" rel="noreferrer" aria-label="Message or call Nairobi Blaze on WhatsApp">
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12 3a8.6 8.6 0 0 0-7.4 13l-1 4 4.1-1A8.6 8.6 0 1 0 12 3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                  <path d="M8.7 8.2c.3-.7.7-.7 1-.7h.7l1 2.4-.8 1.1c-.2.2-.3.5-.1.8.6 1 1.5 1.8 2.6 2.3.3.1.6.1.8-.1l1-.9 2.3 1.1v.7c0 .4-.1.7-.7 1-1.2.5-2.7.1-4.7-1.1-2-1.2-3.8-3.3-4.1-4.4-.3-1.1-.2-1.7.1-2.2z" />
+                </svg>
+                <span>Message or call on WhatsApp</span>
+              </a>
+              <a id="admin-email-link" href="mailto:khalito90@gmail.com">khalito90@gmail.com</a>
+              <a class="social-link" href="https://www.instagram.com/south.c.arena?stkn=aHd5emZxb3R0azY2&amp;utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram: South C Arena">
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2" />
+                  <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                  <circle cx="17.5" cy="6.5" r="1" />
+                </svg>
+                <span>Instagram</span>
+              </a>
+              <a class="social-link" href="https://tiktok.com" target="_blank" rel="noreferrer">
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M19.6 8.3c-1.8 0-3.5-.6-4.7-1.8v8.7a5.1 5.1 0 1 1-4.5-5.1v3.1a2 2 0 1 0 1.4 1.9V3h3.1c.2 2.3 2 4 4.7 4.1v1.2z" />
+                </svg>
+                <span>TikTok</span>
+              </a>
+              <a class="social-link" href="https://facebook.com" target="_blank" rel="noreferrer">
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M13.4 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.6V3.6c-.8-.1-1.7-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.3v2.4H7v3.1h2.9v8h3.5z" />
+                </svg>
+                <span>Facebook</span>
+              </a>
+              <a class="social-link" href="https://youtube.com" target="_blank" rel="noreferrer">
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z" />
+                </svg>
+                <span>YouTube</span>
+              </a>
+            </div>
+          </div>
+
+          <form class="contact-form">
+            <label>
+              Full name
+              <input type="text" placeholder="Your name" />
+            </label>
+            <label>
+              Email
+              <input type="email" placeholder="Your email" />
+            </label>
+            <label>
+              Subject
+              <input type="text" placeholder="How can we help?" />
+            </label>
+            <label>
+              Message
+              <textarea rows="5" placeholder="Write your message"></textarea>
+            </label>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <div>
+          <h3>NAIROBI BLAZE</h3>
+          <p>Develop. Compete. Progress.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#training">Training</a>
+          <a href="#news">News</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <p><a href="mailto:khalito90@gmail.com">khalito90@gmail.com</a></p>
+        <p>© <span id="year"></span> Nairobi Blaze Football Academy</p>
+      </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
