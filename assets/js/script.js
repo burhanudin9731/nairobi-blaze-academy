@@ -1,6 +1,7 @@
 const navToggle = document.querySelector('.nav-toggle');
 const siteNav = document.querySelector('.site-nav');
 const year = document.getElementById('year');
+const isGitHubPages = window.location.hostname.endsWith('.github.io');
 
 if (navToggle && siteNav) {
   navToggle.addEventListener('click', () => {
@@ -14,6 +15,10 @@ if (navToggle && siteNav) {
       navToggle.setAttribute('aria-expanded', 'false');
     });
   });
+}
+
+if (isGitHubPages) {
+  siteNav?.querySelector('a[href="/admin"]')?.remove();
 }
 
 if (year) {
@@ -40,7 +45,7 @@ const formatMoney = (value) => new Intl.NumberFormat('en-KE', {
 }).format(Number(value || 0));
 
 const loadAdminEmail = async () => {
-  if (!adminEmailLink) return;
+  if (!adminEmailLink || isGitHubPages) return;
 
   try {
     const response = await fetch('/api/site-status');
@@ -99,6 +104,11 @@ const setRegistrationOpen = (fee, monthly) => {
 };
 
 const loadSiteStatus = async () => {
+  if (isGitHubPages) {
+    setRegistrationClosed('Online registration is unavailable on this public preview. Please contact Nairobi Blaze by phone or WhatsApp.');
+    return;
+  }
+
   try {
     const response = await fetch('/api/site-status');
     if (!response.ok) {

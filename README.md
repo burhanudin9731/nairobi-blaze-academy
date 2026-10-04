@@ -91,7 +91,11 @@ Username: admin
 Password: admin123
 ```
 
-These values can be overridden using environment variables:
+These are local-development defaults only. Production deployments should set
+`ADMIN_USERNAME`, `ADMIN_PASSWORD`, and `JWT_SECRET` as environment variables.
+The server refuses to start in production if any are missing.
+
+Configure them with:
 
 ```bash
 ADMIN_USERNAME=your_username
@@ -127,7 +131,21 @@ It is intended for app-based frontend work while the root project remains the ma
 
 ## Deployment Notes
 
-This project is structured for lightweight hosting and can be deployed to any Node.js hosting platform that supports Express applications.
+The GitHub Pages workflow publishes the public static website from the `main`
+branch. In the repository settings, set **Pages** > **Build and deployment** >
+**Source** to **GitHub Actions**. The Pages URL appears in the workflow's deploy
+summary after it succeeds.
+
+GitHub Pages serves only static files. The public preview hides the admin link
+and disables registration because the Express API is not hosted there. For the
+admin dashboard and registration API, deploy the Render Blueprint in
+`render.yaml`: connect the repository in the Render dashboard and create a new
+Blueprint. Render generates the admin password and JWT secret; find the password
+in the service's Environment settings.
+
+The free Render service uses an ephemeral filesystem, so the SQLite database in
+`data/site.db` can be reset when the service restarts or redeploys. Use persistent
+storage or a managed database before relying on it for real registrations.
 
 ## License
 
