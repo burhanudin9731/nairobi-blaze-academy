@@ -26,6 +26,7 @@ if (year) {
 }
 
 const registrationStatus = document.getElementById('registration-status');
+const registrationNotice = document.querySelector('.admin-closed-note');
 const adminEmailLink = document.getElementById('admin-email-link');
 if (registrationStatus && new URLSearchParams(window.location.search).get('registration') === 'success') {
   registrationStatus.hidden = false;
@@ -62,6 +63,11 @@ const loadAdminEmail = async () => {
 };
 
 const setRegistrationClosed = (message) => {
+  if (registrationNotice) {
+    registrationNotice.textContent = message || 'Registration is currently closed. Please contact the admin for updates or reopening.';
+    registrationNotice.hidden = false;
+  }
+
   if (ageGroupSelect && ageGroupAvailability) {
     ageGroupAvailability.textContent = message || 'All age groups are currently closed for registration. Please contact the admin for updates.';
   }
@@ -85,6 +91,10 @@ const setRegistrationClosed = (message) => {
 };
 
 const setRegistrationOpen = (fee, monthly) => {
+  if (registrationNotice) {
+    registrationNotice.hidden = true;
+  }
+
   if (joinForm) {
     joinForm.querySelectorAll('input, select, textarea, button').forEach((field) => {
       if (field.type !== 'hidden' && field.name !== 'bot-field') {
@@ -112,10 +122,7 @@ const loadSiteStatus = async () => {
   try {
     const response = await fetch('/api/site-status');
     if (!response.ok) {
-      setRegistrationOpen(4500, 3500);
-      if (ageGroupSelect && ageGroupAvailability) {
-        ageGroupAvailability.textContent = 'Registration is open. Please complete the form below.';
-      }
+      setRegistrationClosed('Could not verify registration status. Please contact Nairobi Blaze before submitting.');
       return;
     }
 
@@ -133,10 +140,7 @@ const loadSiteStatus = async () => {
 
     setRegistrationClosed();
   } catch (error) {
-    setRegistrationOpen(4500, 3500);
-    if (ageGroupSelect && ageGroupAvailability) {
-      ageGroupAvailability.textContent = 'Registration is open. Please complete the form below.';
-    }
+    setRegistrationClosed('Unable to connect to the registration service. Please try again later or contact Nairobi Blaze.');
   }
 };
 
@@ -152,7 +156,10 @@ if (joinForm) {
       });
 
       if (response.status === 404) {
-        joinForm.submit();
+        if (registrationStatus) {
+          registrationStatus.textContent = 'Online registration is unavailable. Please contact Nairobi Blaze directly.';
+          registrationStatus.hidden = false;
+        }
         return;
       }
 
@@ -167,7 +174,10 @@ if (joinForm) {
       joinForm.reset();
       await loadSiteStatus();
     } catch (error) {
-      joinForm.submit();
+      if (registrationStatus) {
+        registrationStatus.textContent = 'Unable to submit your registration. Please check your connection and try again.';
+        registrationStatus.hidden = false;
+      }
     }
   });
 }

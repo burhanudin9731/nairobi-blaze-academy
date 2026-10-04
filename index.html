@@ -402,7 +402,7 @@
             netlify-honeypot="bot-field"
             action="/?registration=success#join"
           >
-            <p class="admin-closed-note">Registration is currently closed. Please contact the admin for updates or reopening.</p>
+            <p class="admin-closed-note" hidden></p>
             <input type="hidden" name="form-name" value="academy-registration" />
             <input type="hidden" name="subject" data-remove-prefix value="New academy registration: %{submissionId}" />
             <p hidden>
@@ -483,13 +483,13 @@
             </label>
             <label class="payment-confirmation">
               <input type="checkbox" name="payment-confirmed" value="yes" required />
-              <span>Registration is closed. The admin will reopen the intake when places become available.</span>
+              <span>I confirm the information above is accurate and the payment reference is correct.</span>
             </label>
             <label>
               Medical information
               <textarea name="medical-information" rows="4" placeholder="Any relevant medical details or conditions"></textarea>
             </label>
-            <button type="submit" class="btn btn-primary">Submit Registration</button>
+            <button type="submit" class="btn btn-primary" disabled>Submit Registration</button>
             <p id="registration-status" role="status" aria-live="polite" hidden>
               Registration received. Nairobi Blaze will verify your payment reference and contact you soon.
             </p>
